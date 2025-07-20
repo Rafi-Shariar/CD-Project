@@ -24,6 +24,8 @@ const FunctionLayouts = () => {
                 <button className='btn btn-soft btn-success' onClick={()=>{navigate('identifier')}}>Identifiers </button>
                 <button className='btn btn-soft btn-error' onClick={()=>{navigate('syntaxerrors')}}>Syntax Errors</button>
                 <button className='btn btn-soft btn-error' onClick={()=>{navigate('tokenizing')}}>Tokenizing</button>
+                <button className='btn btn-soft btn-error' onClick={()=>{navigate('comments')}}>Comments</button>
+                <button className='btn btn-soft btn-error' onClick={()=>{navigate('removedcomments')}}>Remove Comments</button>
                 <button className='btn btn-soft btn-primary' onClick={()=>{navigate('/')}}>Back to Home</button>
             </div>
 

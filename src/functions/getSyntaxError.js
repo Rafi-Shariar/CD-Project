@@ -1,4 +1,8 @@
+import removeComments from "./removeComments";
+
 export default function getSyntaxEroor(code) {
+
+  code = removeComments(code);
   const lines = code.split('\n');
   const errors = [];
 
