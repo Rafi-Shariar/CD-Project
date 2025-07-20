@@ -18,6 +18,7 @@ import SyntaxErrorPage from './pages/functionPages/SyntaxErrorPage.jsx';
 import TokenizationPage from './pages/functionPages/TokenizationPage.jsx';
 import CommentsPage from './pages/functionPages/Comments.jsx';
 import RemoveCommentsPage from './pages/functionPages/RemoveCommentsPage.jsx';
+import Select from './components/Select.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
     path:'/operations',
     element:<FunctionLayouts></FunctionLayouts>,
     children:[
+      {index:true, element:<Select></Select>},
       { path:'removeextraspace', element:<RemoveExtraSpaces></RemoveExtraSpaces> },
       { path:'removespace', element:<RemoveSpaces></RemoveSpaces> },
       { path:'keywords', element:<KeywordsPage></KeywordsPage> },
