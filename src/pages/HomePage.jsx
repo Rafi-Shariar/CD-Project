@@ -1,42 +1,56 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useCodeInput } from "../context/CodeInputContext";
-import { Copy } from "lucide-react"; 
-import toast, { Toaster } from 'react-hot-toast';
-const notify = () => toast.success('Sample Coppied');
+import { Copy } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
+import StringEndsWithContainer from "../components/StringEndsWith/StringEndsWithContainer";
+import CheckSubstringContainer from "../components/CheckSubstring/CheckSubstringContainer";
+import CheckRegularExpression from "../components/CheckRegularExpression/CheckRegularExpression";
+import Footer from "../components/Footer";
+const notify = () => toast.success("Sample Coppied");
+import logo from '../assets/rope.png';
 const sampleTemplates = [
   {
-    title: "Basic Hello World",
-    code: `#include <stdio.h>
+    title: "Code Snippet #1",
+    code: `int a = 5; 
+for (int i = 0; i < 5; i++) {
+        // increment a
+              a++;
+   }`,
+  },
 
-int main() {
-    // Print hello
-    printf("Hello, World!\\n");
-    return 0;
+  {
+    title: "Code Snippet #2",
+    code: `int i=0; 
+while(i < 10){
+   if( i == 5) break;
+   i++;
 }`,
   },
   {
-    title: "Addition of Two Numbers",
-    code: `#include <stdio.h>
+    title: "Code Snippet #3",
+    code: `void sum( int a, int b){
 
-int main() {
-    int a = 5, b = 10;
-    int sum = a + b;
-    printf("Sum is: %d\\n", sum);
-    return 0;
+return a+b;
 }`,
   },
-  {
-    title: "Loop with Comments",
-    code: `#include <stdio.h>
+];
 
-int main() {
-    for (int i = 0; i < 5; i++) {
-        // printing i
-        printf("%d\\n", i);
-    }
-    return 0;
-}`,
+const RETempletes = [
+  {
+    title: "Regular Expression #1",
+    code: `a*b+c*`,
+    String: "aaabccc",
+  },
+  {
+    title: "Regular Expression #2",
+    code: `1*0101+`,
+    String: "1110101",
+  },
+  {
+    title: "Regular Expression #3",
+    code: `m+n*o+p*`,
+    String: "mnno",
   },
 ];
 
@@ -51,66 +65,131 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-100 py-10 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-primary mb-6">
-          C Code Analyzer
-        </h1>
+    <div>
+      <div className="min-h-screen bg-base-100 py-10 px-4">
+        <section className="mb-6  bg-slate-100 p-6 rounded-2xl">
+         <div className="flex items-center justify-center gap-4">
+           <div>
+            <img src={logo} alt="" className="w-12"/>
+           </div>
+           <div>
+             <h1 className="text-4xl font-bold text-primary">
+            String<span className="text-sky-600">Forge</span>
+          </h1>
+           </div>
+         </div>
+          <p className="text-lg text-gray-600 mt-3 text-center">
+            All-in-One String Toolbox: Regex Matching, Extra Space Removal,
+            Keyword Finder, Comment Stripper & More!
+          </p>
+        </section>
 
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-            Paste your C code below:
-          </h2>
-          <textarea
-            className="textarea textarea-bordered w-full h-64 font-mono text-sm"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder="// Paste your C code here..."
-          />
-          <div className="text-center mt-4">
-            <button
-              className="btn btn-primary px-8"
-              onClick={() => navigate("/loading")}
-            >
-              Analyze Code
-            </button>
-          </div>
-        </div>
+        <div className="max-w-7xl mx-auto">
+          <section className="flex gap-16">
+            <div className="w-2/3 mb-10">
+              {/* Code Input */}
+              <div className="bg-gradient-to-br from-[#0F828C] to-[#78B9B5] p-6 rounded-2xl shadow-xl">
+                <h2 className="text-2xl mb-4 text-slate-100">
+                  Paste your C code below:
+                </h2>
+                <textarea
+                  className="textarea textarea-bordered w-full h-64 font-mono text-sm"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  placeholder="Paste your C code here..."
+                  required
+                />
+                <div className="text-center mt-4">
+                  <button
+                    className="btn btn-primary px-8"
+                    onClick={() => navigate("/loading")}
+                  >
+                    Analyze Code
+                  </button>
+                </div>
+              </div>
 
-        <hr className="my-8" />
+              <div>
+                <StringEndsWithContainer />
+              </div>
 
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-          Try with Sample Code Templates
-        </h2>
+              <div>
+                <CheckSubstringContainer />
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sampleTemplates.map((sample, index) => (
-            <div
-              key={index}
-              className="relative bg-white rounded-xl shadow-md p-4 border"
-            >
-              {/* Copy icon */}
-              <button
-                className="absolute top-2 right-2 tooltip tooltip-left"
-                data-tip="Copy code"
-                onClick={() => handleCopy(sample.code)}
-              >
-                <Copy className="w-5 h-5 text-gray-500 hover:text-primary cursor-pointer" />
-              </button>
-
-              <h3 className="text-lg font-semibold mb-2">{sample.title}</h3>
-              <pre className="bg-gray-100 p-3 rounded-lg text-sm font-mono overflow-x-auto whitespace-pre-wrap">
-                {sample.code}
-              </pre>
+              <div>
+                <CheckRegularExpression />
+              </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+            <div className="w-1/3  mx-auto grid grid-cols-1 gap-10 bg-sky-50 rounded-xl border border-sky-300 p-8 mb-10 shadow-2xl">
+              {/* C Code Snippets Section */}
+              <section>
+                <h1 className="text-2xl font-bold text-sky-700 mb-6 border-b border-sky-300 pb-2">
+                  Sample C Code Snippets
+                </h1>
+
+                <div className="space-y-6">
+                  {sampleTemplates.map((sample, index) => (
+                    <div
+                      key={index}
+                      className="relative bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                    >
+                      {/* Copy icon */}
+                      <button
+                        className="absolute top-3 right-3 tooltip tooltip-left"
+                        data-tip="Copy code"
+                        onClick={() => handleCopy(sample.code)}
+                        aria-label={`Copy code for ${sample.title}`}
+                      >
+                        <Copy className="w-6 h-6 text-gray-400 hover:text-sky-600 cursor-pointer" />
+                      </button>
+
+                      <h3 className="text-xl font-semibold mb-3 text-sky-800">
+                        {sample.title}
+                      </h3>
+                      <pre className="bg-gray-100 p-4 rounded-lg text-sm font-mono overflow-x-auto whitespace-pre-wrap select-text">
+                        {sample.code}
+                      </pre>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Regular Expressions Section */}
+              <section>
+                <h1 className="text-2xl font-bold text-sky-700 mb-6 border-b border-sky-300 pb-2">
+                  Sample Regular Expressions
+                </h1>
+
+                <div className="space-y-6">
+                  {RETempletes.map((sample, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                    >
+                      <h3 className="text-xl font-semibold mb-3 text-sky-800">
+                        {sample.title}
+                      </h3>
+                      <pre className="bg-gray-100 p-4 rounded-lg text-sm font-mono overflow-x-auto whitespace-pre-wrap select-text">
+                        {sample.code}
+                      </pre>
+
+                      <pre className="bg-gray-50 p-3 rounded-lg text-sm font-mono overflow-x-auto whitespace-pre-wrap mt-5 border border-sky-200 text-sky-900">
+                        Accepted String:{" "}
+                        <span className="font-semibold">{sample.String}</span>
+                      </pre>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+
+        <Toaster position="top-right" reverseOrder={false} />
+      </div>
+      <Footer />
     </div>
   );
 };

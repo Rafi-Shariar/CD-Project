@@ -14,7 +14,6 @@ import RemoveExtraSpaces from './pages/functionPages/RemoveExtraSpaces.jsx';
 import RemoveSpaces from './pages/functionPages/RemoveSpaces.jsx';
 import KeywordsPage from './pages/functionPages/KeywordsPage.jsx';
 import IdentifierPage from './pages/functionPages/IdentifierPage.jsx';
-import SyntaxErrorPage from './pages/functionPages/SyntaxErrorPage.jsx';
 import TokenizationPage from './pages/functionPages/TokenizationPage.jsx';
 import CommentsPage from './pages/functionPages/Comments.jsx';
 import RemoveCommentsPage from './pages/functionPages/RemoveCommentsPage.jsx';
@@ -37,7 +36,6 @@ const router = createBrowserRouter([
       { path:'removespace', element:<RemoveSpaces></RemoveSpaces> },
       { path:'keywords', element:<KeywordsPage></KeywordsPage> },
       { path:'identifier', element:<IdentifierPage></IdentifierPage> },
-      { path:'syntaxerrors', element:<SyntaxErrorPage></SyntaxErrorPage> },
       { path:'tokenizing', element:<TokenizationPage></TokenizationPage> },
       { path:'comments', element:<CommentsPage></CommentsPage> },
       { path:'removedcomments', element:<RemoveCommentsPage></RemoveCommentsPage> },
