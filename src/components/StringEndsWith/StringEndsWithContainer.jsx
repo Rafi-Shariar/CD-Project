@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CheckEndingWith from '../../functions/CheckEndingWith';
 import { CheckCircle, XCircle } from 'lucide-react'; // optional icons
-
+import { IoCheckmarkDone } from "react-icons/io5";
 const StringEndsWithContainer = () => {
   const [showAns, setShowAns] = useState(false);
   const [ans, setAns] = useState(false);
@@ -41,7 +41,7 @@ const StringEndsWithContainer = () => {
           required
         ></textarea>
         <button type="submit" className=" btn  btn-soft btn-info">
-          Check
+          Check <IoCheckmarkDone />
         </button>
       </form>
 

@@ -6,9 +6,10 @@ import toast, { Toaster } from "react-hot-toast";
 import StringEndsWithContainer from "../components/StringEndsWith/StringEndsWithContainer";
 import CheckSubstringContainer from "../components/CheckSubstring/CheckSubstringContainer";
 import CheckRegularExpression from "../components/CheckRegularExpression/CheckRegularExpression";
+import { FaSearchengin } from "react-icons/fa6";
 import Footer from "../components/Footer";
 const notify = () => toast.success("Sample Coppied");
-import logo from '../assets/rope.png';
+import logo from "../assets/rope.png";
 const sampleTemplates = [
   {
     title: "Code Snippet #1",
@@ -16,7 +17,8 @@ const sampleTemplates = [
 for (int i = 0; i < 5; i++) {
         // increment a
               a++;
-   }`,
+   } 
+   `,
   },
 
   {
@@ -68,16 +70,16 @@ const HomePage = () => {
     <div>
       <div className="min-h-screen bg-base-100 py-10 px-4">
         <section className="mb-6  bg-slate-100 p-6 rounded-2xl">
-         <div className="flex items-center justify-center gap-4">
-           <div>
-            <img src={logo} alt="" className="w-12"/>
-           </div>
-           <div>
-             <h1 className="text-4xl font-bold text-primary">
-            String<span className="text-sky-600">Forge</span>
-          </h1>
-           </div>
-         </div>
+          <div className="flex items-center justify-center gap-4">
+            <div>
+              <img src={logo} alt="" className="w-12" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-primary">
+                String<span className="text-sky-600">Forge</span>
+              </h1>
+            </div>
+          </div>
           <p className="text-lg text-gray-600 mt-3 text-center">
             All-in-One String Toolbox: Regex Matching, Extra Space Removal,
             Keyword Finder, Comment Stripper & More!
@@ -104,7 +106,7 @@ const HomePage = () => {
                     className="btn btn-primary px-8"
                     onClick={() => navigate("/loading")}
                   >
-                    Analyze Code
+                    Analyze Code <FaSearchengin />
                   </button>
                 </div>
               </div>

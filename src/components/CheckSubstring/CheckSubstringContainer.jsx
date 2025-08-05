@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { CheckCircle, XCircle } from 'lucide-react'; // icons
 import CheckSubstring from '../../functions/CheckSubstring';
-
+import { IoCheckmarkDone } from "react-icons/io5";
 const CheckSubstringContainer = () => {
   const [showAns, setShowAns] = useState(false);
   const [ans, setAns] = useState(false);
@@ -43,7 +43,7 @@ const CheckSubstringContainer = () => {
           required
         ></textarea>
         <button type="submit" className="btn btn-soft btn-primary">
-          Check
+          Check <IoCheckmarkDone />
         </button>
       </form>
 

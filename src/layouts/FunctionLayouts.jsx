@@ -1,38 +1,40 @@
 import React from "react";
 import { useCodeInput } from "../context/CodeInputContext";
-import getStringLength from "../functions/getStringLength";
-import { Outlet, useNavigate } from "react-router";
-import logo from '../assets/rope.png';
+
+import { Link, Outlet, useNavigate } from "react-router";
+import logo from "../assets/rope.png";
+import SummaryBox from "../components/SummaryBox";
+import Footer from "../components/Footer";
 const FunctionLayouts = () => {
   const { code } = useCodeInput();
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
-       <section className="mb-6  bg-slate-100 p-6 rounded-2xl">
-               <div className="flex items-center justify-center gap-4">
-                 <div>
-                  <img src={logo} alt="" className="w-12"/>
-                 </div>
-                 <div>
-                   <h1 className="text-4xl font-bold text-primary">
-                  String<span className="text-sky-600">Forge</span>
-                </h1>
-                 </div>
-               </div>
-                
-              </section>
+    <div>
+      <div className="max-w-7xl mx-auto px-6 py-10">
+      <section className="mb-6  bg-slate-100 p-6 rounded-2xl">
+        <div className="flex items-center justify-center gap-4">
+          <div>
+            <img src={logo} alt="" className="w-12" />
+          </div>
+          <div>
+            <Link to={'/'}>
+              <h1 className="text-4xl font-bold text-primary">
+              String<span className="text-sky-600">Forge</span>
+            </h1>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <div className="mb-6 text-center space-x-8 text-lg text-gray-700">
-        <span>
-          Length: <strong>{getStringLength(code)}</strong>
-        </span>
+         <SummaryBox/>
       </div>
 
       <div className="max-w-5xl mx-auto mt-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
           {/* Column 1 */}
-          <div>
+          <div className="border p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
               Space Tools
             </h3>
@@ -53,7 +55,7 @@ const FunctionLayouts = () => {
           </div>
 
           {/* Column 2 */}
-          <div>
+          <div className="border p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
               Code Analysis
             </h3>
@@ -80,7 +82,7 @@ const FunctionLayouts = () => {
           </div>
 
           {/* Column 3 */}
-          <div>
+          <div className="border p-6 rounded-xl shadow-lg">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
               Comments
             </h3>
@@ -114,6 +116,9 @@ const FunctionLayouts = () => {
           Back to Home
         </button>
       </div>
+    </div>
+
+    <Footer/>
     </div>
   );
 };

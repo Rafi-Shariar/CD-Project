@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 import CheckRegexMatch from '../../functions/CheckRegularExpression';
-
+import { IoCheckmarkDone } from "react-icons/io5";
 const CheckRegularExpression = () => {
   const [showAns, setShowAns] = useState(false);
   const [ans, setAns] = useState(false);
@@ -44,7 +44,7 @@ const CheckRegularExpression = () => {
           required
         ></textarea>
         <button type="submit" className="btn btn-soft btn-success">
-          Check
+          Check <IoCheckmarkDone />
         </button>
       </form>
 
