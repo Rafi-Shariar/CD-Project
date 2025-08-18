@@ -21,14 +21,14 @@ export function getComments(code) {
                 multiLineBuffer = '';
             }
         } else if (line.trim().startsWith('//')) {
-            // Single-line comment
+        
             results.push({
                 line: lineNum,
                 type: 'Single-line',
                 comment: line.trim(),
             });
         } else if (line.includes('//')) {
-            // Inline single-line comment
+        
             const commentIndex = line.indexOf('//');
             results.push({
                 line: lineNum,
@@ -36,13 +36,13 @@ export function getComments(code) {
                 comment: line.slice(commentIndex).trim(),
             });
         } else if (line.includes('/*')) {
-            // Start of multi-line comment
+       
             inMultiLine = true;
             startLine = lineNum;
             multiLineBuffer = line + '\n';
 
             if (line.includes('*/')) {
-                // Handles one-liner /* ... */ in same line
+         
                 inMultiLine = false;
                 results.push({
                     line: startLine,

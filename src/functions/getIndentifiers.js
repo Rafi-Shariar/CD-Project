@@ -6,12 +6,9 @@ const cKeywords = new Set([
 ]);
 
 export default function getIdentifiers(input) {
-  // Match words that start with a letter or underscore and can contain digits, underscores, letters
   const tokens = input.match(/\b[_a-zA-Z][_a-zA-Z0-9]*\b/g) || [];
 
-  // Filter: exclude C keywords
   const identifiers = tokens.filter(token => !cKeywords.has(token));
 
-  // Remove duplicates
   return [...new Set(identifiers)];
 }

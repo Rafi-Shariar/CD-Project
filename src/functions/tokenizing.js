@@ -14,8 +14,8 @@ export default function tokenizing(code) {
 
   const tokenList = [];
 
-  // Remove comments and tokenize
-  code = code.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '');
+  code = code.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, ''); //remove comments
+  
   const regex = /\b[_a-zA-Z][_a-zA-Z0-9]*\b|[0-9]+(?:\.[0-9]+)?|==|!=|>=|<=|&&|\|\||\+\+|--|<<|>>|[=+\-*/%&|^~<>!;:,()\[\]{}]/g;
 
   let match;

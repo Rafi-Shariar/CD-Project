@@ -9,14 +9,14 @@ export default function removeComments(code) {
 
     while (i < line.length) {
       if (!inMultiLineComment && line[i] === '/' && line[i + 1] === '/') {
-        // Single-line comment start
-        break; // ignore rest of the line
+
+        break; 
       } else if (!inMultiLineComment && line[i] === '/' && line[i + 1] === '*') {
-        // Multi-line comment start
+     
         inMultiLineComment = true;
         i += 2;
       } else if (inMultiLineComment && line[i] === '*' && line[i + 1] === '/') {
-        // Multi-line comment end
+     
         inMultiLineComment = false;
         i += 2;
       } else if (!inMultiLineComment) {

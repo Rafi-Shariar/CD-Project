@@ -10,7 +10,7 @@ const FunctionLayouts = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-6 py-10">
       <section className="mb-6  bg-slate-100 p-6 rounded-2xl">
         <div className="flex items-center justify-center gap-4">
@@ -118,7 +118,6 @@ const FunctionLayouts = () => {
       </div>
     </div>
 
-    <Footer/>
     </div>
   );
 };
